@@ -1,0 +1,344 @@
+HOSTNAME          = farm1969.jlab.org
+ENVIRONMENT       = /w/halld-scshelf2101/home/afzal/scripts/bggen/analysis-2017_01-ver56.xml
+INPUTFILE         = dana_rest_bggen_031057_006.hddm
+CONFIG_FILE       = /work/halld/home/afzal/scripts/bggen/jana_pi0pippim_bggen.config
+OUTDIR_LARGE      = /volatile/halld/home/afzal/bggen/RunPeriod-2017-01/ver03
+OUTDIR_SMALL      = /farm_out/afzal/bggen/RunPeriod-2017-01/bggen/batch04/
+RUN_NUMBER        = 031057
+FILE_NUMBER       = 006
+CACHE_PIN_DAYS    = 
+pwd = /scratch/slurm/45750486
+df -h:
+Filesystem                                                   Size  Used Avail Use% Mounted on
+devtmpfs                                                     4.0M     0  4.0M   0% /dev
+tmpfs                                                        126G  280K  126G   1% /dev/shm
+tmpfs                                                         51G  2.7G   48G   6% /run
+efivarfs                                                     128K   20K  104K  17% /sys/firmware/efi/efivars
+/dev/mapper/farm1969-root                                     32G  8.6G   24G  27% /
+/dev/sda2                                                    960M  400M  561M  42% /boot
+/dev/sda1                                                    599M  7.1M  592M   2% /boot/efi
+/dev/mapper/farm1969-tmp                                     8.0G   90M  7.9G   2% /tmp
+/dev/mapper/farm1969-var                                     4.0G  797M  3.2G  20% /var
+/dev/mapper/farm1969-scratch                                 811G   69G  742G   9% /scratch
+/dev/mapper/farm1969-var_lib_dkms                            4.0G   61M  3.9G   2% /var/lib/dkms
+/dev/mapper/farm1969-var_spool_abrt                          2.0G   47M  1.9G   3% /var/spool/abrt
+/dev/mapper/farm1969-var_tmp                                 8.0G   90M  7.9G   2% /var/tmp
+/dev/mapper/farm1969-var_spool_slurm                         2.0G   53M  1.9G   3% /var/spool/slurm
+/dev/mapper/farm1969-var_log                                 4.0G  576M  3.4G  15% /var/log
+/dev/mapper/farm1969-var_crash                               2.0G   47M  1.9G   3% /var/crash
+/dev/mapper/farm1969-var_cache                               8.0G  3.0G  5.0G  38% /var/cache
+/dev/mapper/farm1969-var_spool_tfmrex                        2.0G   47M  1.9G   3% /var/spool/tfmrex
+/dev/mapper/farm1969-var_log_audit                           2.0G   79M  1.9G   4% /var/log/audit
+172.17.1.21@o2ib:172.17.1.22@o2ib:/lustre24/expphy/cache      12P  6.5P  4.9P  58% /lustre24/expphy/cache
+scigroup:/work/links.indirect                                9.5G     0  9.5G   0% /w/work
+172.17.1.21@o2ib:172.17.1.22@o2ib:/lustre24/expphy/swif2      12P  6.5P  4.9P  58% /lustre24/expphy/swif2
+172.17.1.21@o2ib:172.17.1.22@o2ib:/lustre24/expphy/volatile   12P  6.5P  4.9P  58% /lustre24/expphy/volatile
+scifarmfs:/scifarmfs_data                                    973G  202G  772G  21% /u/scifarm
+jlabhome:/ifs/cuehome                                        8.0T  5.9T  2.2T  73% /u/home
+jlabgrp:/group                                                40T   18T   23T  44% /u/group
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/config-osg.opensciencegrid.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/oasis.opensciencegrid.org
+scigroup:/scigroup_data                                      7.7T  2.3T  5.4T  31% /u/scigroup
+scshelf2102host-ib:/scshelf2102/hallc                        6.6T  1.0M  6.6T   1% /w/hallc-scshelf2102
+scshelf2102host-ib:/scshelf2102/halla                        121T  1.0M  121T   1% /w/halla-scshelf2102
+scshelf2102host-ib:/scshelf2102/halla/sbs                     22T   15T  7.1T  68% /w/halla-scshelf2102/sbs
+sciwork2401-ib:/export/JAM                                    20T  8.9T   12T  45% /w/jam-sciwork24
+scshelf2101host-ib:/scshelf2101/halld                        400T  339T   62T  85% /w/halld-scshelf2101
+sciosgfs:/sciosgfs_data                                      1.6T   13G  1.6T   1% /u/sciosg
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/singularity.opensciencegrid.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/ams.cern.ch
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/atlas.cern.ch
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/belle.cern.ch
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/clicdp.cern.ch
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/cms.cern.ch
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/connect.opensciencegrid.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/eic.opensciencegrid.org
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/gluex.osgstorage.org
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/gwosc.osgstorage.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/icecube.opensciencegrid.org
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/icecube.osgstorage.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/larsoft-ib.opensciencegrid.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/larsoft.opensciencegrid.org
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/ligo.storage.igwn.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/nexo.opensciencegrid.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/sft.cern.ch
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/shared.storage.igwn.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/snoplus.egi.eu
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/software.igwn.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/sphenix.opensciencegrid.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/spt.opensciencegrid.org
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/stash.osgstorage.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/sw.lsst.eu
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/unpacked.cern.ch
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/veritas.opensciencegrid.org
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/virgo.storage.igwn.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/xenon.opensciencegrid.org
+scshelf2102host-ib:/scshelf2102/hallb                        103G     0  103G   0% /w/hallb-scshelf2102
+sciwork2401-ib:/export/lqcdpheno                              10T  7.3T  2.8T  73% /w/lqcdpheno-sciwork24
+scshelf2104host-ib:/scshelf2104/eic                          514T  289T  225T  57% /w/eic-scshelf2104
+cvmfs2                                                      1000M  557M  444M  56% /cvmfs/public-uc.osgstorage.org
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/rnog.opensciencegrid.org
+sciwork1802-ib:/export/jpac                                  4.0T  504G  3.6T  13% /w/jpac-sciwork18
+scihome:/scihome                                             7.7T  104G  7.5T   2% /u/scihome
+sciwork1802-ib:/export/osgpool                                30T   16T   15T  51% /w/osgpool-sciwork18
+sciwork2401-ib:/export/radcon                               1021G  130G  891G  13% /w/radcon-sciwork24
+scshelf2102host-ib:/scshelf2102/cebaf24gev                    10T  9.4T  626G  94% /w/cebaf24gev-scshelf2102
+scshelf2102host-ib:/scshelf2102/halla/apex                   1.0T  768G  256G  76% /w/halla-scshelf2102/apex
+scshelf2102host-ib:/scshelf2102/hallc/etc                    5.0T  3.0T  2.1T  60% /w/hallc-scshelf2102/etc
+scshelf2102host-ib:/scshelf2102/hallc/nps                    1.0T  791G  234G  78% /w/hallc-scshelf2102/nps
+scshelf2102host-ib:/scshelf2102/hallc/shms                   300G  253G   47G  85% /w/hallc-scshelf2102/shms
+scshelf2102host-ib:/scshelf2102/hallc/alphaE                1021G  664G  358G  66% /w/hallc-scshelf2102/alphaE
+scshelf2102host-ib:/scshelf2102/hallb/hps                     25T   21T  4.5T  83% /w/hallb-scshelf2102/hps
+scshelf2102host-ib:/scshelf2102/halla/moller12gev            7.5T  3.8T  3.8T  50% /w/halla-scshelf2102/moller12gev
+scshelf2102host-ib:/scshelf2102/hallb/prad                    16T   13T  3.3T  80% /w/hallb-scshelf2102/prad
+scshelf2102host-ib:/scshelf2102/hallc/jpsi-007               1.0T  928G   97G  91% /w/hallc-scshelf2102/jpsi-007
+scshelf2102host-ib:/scshelf2102/halla/tdis                   500G   62G  439G  13% /w/halla-scshelf2102/tdis
+scshelf2102host-ib:/scshelf2102/halla/solid                  7.4T  6.1T  1.3T  83% /w/halla-scshelf2102/solid
+scshelf2102host-ib:/scshelf2102/hallb/clas12                 167T  162T  5.0T  98% /w/hallb-scshelf2102/clas12
+scshelf2102host-ib:/scshelf2102/hallb/clas                    45T   29T   17T  64% /w/hallb-scshelf2102/clas
+cvmfs2                                                        49G   46G  2.9G  95% /cvmfs/geant4.cern.ch
+scshelf2102host-ib:/scshelf2102/halla/etc                    9.0T  7.7T  1.4T  86% /w/halla-scshelf2102/etc
+tmpfs                                                         26G   16K   26G   1% /run/user/0
+tmpfs                                                         26G   16K   26G   1% /run/user/11076
+SHELL=/bin/bash
+SLURM_JOB_USER=afzal
+AMPTOOLS_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/amptools/AmpTools-0.14.4
+SLURM_TASKS_PER_NODE=1
+XERCES_INCLUDE=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/xerces-c/xerces-c-3.2.3/include
+G4VIS_USE_DAWN=1
+SLURM_JOB_UID=11076
+G4VIS_USE_RAYTRACERX=1
+HISTCONTROL=ignoredups
+G4ENSDFSTATEDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4ENSDFSTATE2.2
+SLURM_EXPORT_ENV=SWIF_JOB_ID=42265261,SWIF_JOB_ATTEMPT_ID=55097853,SWIF_JOB_STAGE_DIR=/lustre/enp/swif2/jobs/afzal/bggen_2017-01_ver03_batch04_031057_006/55097853,SWIF_JOB_WORK_DIR=/lustre/enp/swif2/jobs/afzal/bggen_2017-01_ver03_batch04_031057_006/55097853
+HD_UTILITIES_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hd_utilities/hd_utilities-1.42
+CERNLIB_WORD_LENGTH=64-bit
+SLURM_LUSTRE_JOB_ID=farm1969,afzal,45750486
+SLURM_TASK_PID=1658511
+GROUP=enp
+HALLD_SIM_DEBUG_LEVEL=0
+AMPTOOLS=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/amptools/AmpTools-0.14.4/AmpTools
+MACHTYPE=x86_64
+SLURM_LOCALID=0
+SLURM_SUBMIT_DIR=/
+HOSTNAME=farm1969.jlab.org
+HISTSIZE=1000
+SLURMD_NODENAME=farm1969
+CERN_ROOT=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/cernlib/2005
+SLURM_JOB_START_TIME=1744970702
+EVTGENDIR=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/evtgen/evtgen-01.07.00/build
+HYDRA_LAUNCHER_EXTRA_ARGS=--external-launcher
+ROOT_VERSION=6.24.04
+EVTGEN_VERSION=01.07.00
+GEANT4_VERSION=10.04.p02
+G4PIIDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4PII1.3
+HEPMC_VERSION=2.06.10
+SLURM_CLUSTER_NAME=scicomp
+SLURM_JOB_END_TIME=1744999502
+AMPTOOLS_VERSION=0.14.4
+SLURM_CPUS_ON_NODE=16
+MCWRAPPER_CENTRAL=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/gluex_MCwrapper/gluex_MCwrapper-v2.6.1
+G4NEUTRONXSDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4NEUTRONXS1.4
+GLUEX_MCWRAPPER_VERSION=v2.6.1
+SLURM_JOB_CPUS_PER_NODE=16
+XERCES_C_VERSION=3.2.3
+QTLIBPATH=/usr/lib64
+HDGEANT4_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hdgeant4/hdgeant4-2.34.0
+CERNLIB_VERSION=2005
+HDDS_VERSION=4.15.0
+G4VIS_USE_OPENGLXM=1
+SQLITECPP_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/sqlitecpp/SQLiteCpp-3.1.1
+PWD=/scratch/slurm/45750486
+PRTE_MCA_plm_slurm_args=--external-launcher
+G4VIS_USE_OPENGLX=1
+SWIF_JOB_STAGE_DIR=/lustre/enp/swif2/jobs/afzal/bggen_2017-01_ver03_batch04_031057_006/55097853
+SLURM_GTIDS=0
+LOGNAME=afzal
+XDG_SESSION_TYPE=unspecified
+SLURM_JOB_PARTITION=production
+MODULESHOME=/usr/share/Modules
+MANPATH=:/opt/puppetlabs/puppet/share/man
+SLURM_TRES_PER_TASK=cpu:16
+JANA_RESOURCE_DIR=/group/halld/www/halldweb/html/resources
+SLURM_JOB_NUM_NODES=1
+SWIF_JOB_ID=42265261
+JANA_CALIB_URL=mysql://ccdb_user@hallddb-farm.jlab.org/ccdb
+G4LIB_USE_ZLIB=1
+BMS_OSNAME=Linux_Alma9-x86_64-gcc11.5.0
+G4LEDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4EMLOW7.3
+SLURM_JOBID=45750486
+G4LIB_BUILD_SHARED=1
+I_MPI_HYDRA_BOOTSTRAP_EXEC_EXTRA_ARGS=--external-launcher
+SLURM_JOB_QOS=normal
+DIRACXX_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/diracxx/Diracxx-2.0.2
+G4WORKDIR=/home/afzal/geant4_workdir
+HOME=/home/afzal
+LANG=en_US.UTF-8
+G4UI_USE_QT=1
+SQLITECPP_VERSION=3.1.1
+CERN=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/cernlib
+SLURM_PROCID=0
+PHOTOSDIR=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/photos/Photos-3.61
+JANA_PLUGIN_PATH=/home/afzal/halld_my/Linux_Alma9-x86_64-gcc11.5.0/plugins:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_sim/halld_sim-4.41.1/Linux_Alma9-x86_64-gcc11.5.0/plugins:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_recon/halld_recon-4.37.0/Linux_Alma9-x86_64-gcc11.5.0/plugins:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/jana/jana_0.8.2^ccdb168/Linux_Alma9-x86_64-gcc11.5.0/plugins:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/jana/jana_0.8.2^ccdb168/Linux_Alma9-x86_64-gcc11.5.0/lib
+SQLITE_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/sqlite/sqlite-3.36.0
+RCDB_CONNECTION=mysql://rcdb@hallddb.jlab.org/rcdb
+DIRACXX_DIR=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/diracxx/Diracxx-2.0.2
+JANA_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/jana/jana_0.8.2^ccdb168/Linux_Alma9-x86_64-gcc11.5.0
+OSTYPE=linux
+SQLITE_YEAR=2021
+TMPDIR=/scratch/slurm/45750486/.cache/tmp
+SLURM_CPUS_PER_TASK=16
+CCDB_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/ccdb/ccdb_1.06.08
+SLURM_TOPOLOGY_ADDR=farm1969
+G4VIS_USE_OPENGLQT=1
+G4UI_USE_TCSH=1
+RCDB_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/rcdb/rcdb_0.07.01
+HALLD_MY=/home/afzal/halld_my
+HALLD_RECON_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_recon/halld_recon-4.37.0
+RCDB_SCHEMA_2=false
+HYDRA_BOOTSTRAP=slurm
+LAPACK_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/lapack/lapack-3.9.0
+HEPMCDIR=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hepmc/HepMC-2.06.10
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+XERCESCROOT=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/xerces-c/xerces-c-3.2.3
+CCDB_VERSION=1.06.08
+XDG_SESSION_CLASS=background
+SLURM_SCRIPT_CONTEXT=prolog_task
+SLURM_MEM_PER_NODE=13672
+G4NEUTRONHPDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4NDL4.5
+PYTHONPATH=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hdgeant4/hdgeant4-2.34.0/g4py:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_recon/halld_recon-4.37.0/Linux_Alma9-x86_64-gcc11.5.0/python3:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/rcdb/rcdb_0.07.01/python:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/ccdb/ccdb_1.06.08/python:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/ccdb/ccdb_1.06.08/python/ccdb/ccdb_pyllapi:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/root/root-6.24.04/lib:
+HALLD_RECON_VERSION=4.37.0
+HOST=farm1969.jlab.org
+ROOT_ANALYSIS_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/gluex_root_analysis/gluex_root_analysis-1.21.1^hdr4370
+CERN_LEVEL=2005
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+USER=afzal
+SLURM_NODELIST=farm1969
+G4LIB_USE_GDML=1
+ENVIRONMENT=/w/halld-scshelf2101/home/afzal/scripts/bggen/analysis-2017_01-ver56.xml
+CCDB_CONNECTION=mysql://ccdb_user@hallddb-farm.jlab.org/ccdb
+CONDA_SHLVL=0
+G4MULTITHREADED=1
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+LOADEDMODULES=
+SLURM_JOB_ACCOUNT=halld
+SLURM_PRIO_PROCESS=0
+GLUEX_ROOT_ANALYSIS_DIRTAG=hdr4370
+EVTGEN_PARTICLE_DEFINITIONS=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/evtgen/evtgen-01.07.00/build/share/evt.pdl
+HDGEANT4_VERSION=2.34.0
+RCDB_VERSION=0.07.01
+SHLVL=3
+JANA_DIRTAG=ccdb168
+SLURM_NNODES=1
+PHOTOS_VERSION=3.61
+G4SAIDXSDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4SAIDDATA1.1
+HALLD_SIM_VERSION=4.41.1
+HD_UTILITIES_VERSION=1.42
+G4INCLUDE=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/include/Geant4
+ROOTSYS=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/root/root-6.24.04
+XDG_SESSION_ID=c11172
+SLURM_SUBMIT_HOST=sca2302.jlab.org
+LD_LIBRARY_PATH=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/evtgen/evtgen-01.07.00/build/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/photos/Photos-3.61/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hepmc/HepMC-2.06.10/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/diracxx/Diracxx-2.0.2/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/diracxx/Diracxx-2.0.2:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/evio/evio-4.4.6/Linux-x86_64/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/rcdb/rcdb_0.07.01/cpp/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/ccdb/ccdb_1.06.08/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/lib64:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/root/root-6.24.04/lib:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/xerces-c/xerces-c-3.2.3/lib
+EVTGEN_DECAY_FILE=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/evtgen/evtgen-01.07.00/build/share/DECAY.DEC
+XDG_RUNTIME_DIR=/scratch/slurm/45750486/.cache/run
+SLURM_JOB_ID=45750486
+SLURM_NODEID=0
+S_COLORS=auto
+__MODULES_LMINIT=module use --append /usr/share/Modules/modulefiles:module use --append /etc/modulefiles:module use --append /usr/share/modulefiles
+SWIF_JOB_WORK_DIR=/scratch/slurm/45750486
+DOCKER_HOST=unix:///run/user/11076/podman/podman.sock
+G4REALSURFACEDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/RealSurface2.1.1
+G4ABLADATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/G4ABLA3.1
+G4SYSTEM=Linux-g++
+which_declare=declare -f
+LAPACK_VERSION=3.9.0
+JANA_VERSION=0.8.2
+G4ROOT=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02
+EVIOROOT=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/evio/evio-4.4.6/Linux-x86_64
+SQLITE_VERSION=3.36.0
+G4LIB=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/lib64/Geant4-10.4.2
+SWIF_JOB_ATTEMPT_ID=55097853
+XDG_DATA_DIRS=/home/afzal/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+CCDB_USER=afzal
+BUILD_SCRIPTS=/group/halld/Software/build_scripts
+GLUEX_TOP=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0
+QTHOME=/usr
+VENDOR=unknown
+SLURM_CONF=/etc/slurm/slurm.conf
+PATH=/apps/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/gluex_MCwrapper/gluex_MCwrapper-v2.6.1:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hdgeant4/hdgeant4-2.34.0/bin/Linux-g++:/home/afzal/halld_my/Linux_Alma9-x86_64-gcc11.5.0/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_sim/halld_sim-4.41.1/Linux_Alma9-x86_64-gcc11.5.0/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_recon/halld_recon-4.37.0/Linux_Alma9-x86_64-gcc11.5.0/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/jana/jana_0.8.2^ccdb168/Linux_Alma9-x86_64-gcc11.5.0/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/rcdb/rcdb_0.07.01:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/rcdb/rcdb_0.07.01/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/rcdb/rcdb_0.07.01/cpp/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/ccdb/ccdb_1.06.08/bin:/home/afzal/geant4_workdir/bin/Linux-g++:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/cernlib/2005/bin:/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/root/root-6.24.04/bin:/apps/perl/bin:/lustre/enp/swif2/jobs/afzal/bggen_2017-01_ver03_batch04_031057_006/55097853/.swif:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin
+G4LEVELGAMMADATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/PhotonEvaporation5.2
+JANA_GEOMETRY_URL=ccdb:///GEOMETRY/main_HDDS.xml
+GLUEX_ROOT_ANALYSIS_VERSION=1.21.1
+DIRACXX_VERSION=2.0.2
+SLURM_JOB_NAME=bggen_2017-01_ver03_batch04_031057_006
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+G4INSTALL=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/geant4make
+G4RADIOACTIVEDATA=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/geant4/geant4.10.04.p02/share/Geant4-10.4.2/data/RadioactiveDecay5.2
+HDDS_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/hdds/hdds-4.15.0
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/11076/bus
+HALLD_SIM_HOME=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/halld_sim/halld_sim-4.41.1
+G4UI_USE_XM=1
+MAIL=/var/spool/mail/afzal
+AMPPLOTTER=/group/halld/Software/builds/Linux_Alma9-x86_64-gcc11.5.0/amptools/AmpTools-0.14.4/AmpPlotter
+EVIO_VERSION=4.4.6
+HOSTTYPE=x86_64-linux
+HALLD_RECON_DEBUG_LEVEL=0
+OMPI_MCA_plm_slurm_args=--external-launcher
+SLURM_GET_USER_ENV=1
+SLURM_JOB_GID=765
+OLDPWD=/group/halld/Software/build_scripts
+SLURM_JOB_NODELIST=farm1969
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+I_MPI_HYDRA_BOOTSTRAP=slurm
+BASH_FUNC_ml%%=() {  module ml "$@"
+}
+BASH_FUNC_which%%=() {  ( alias;
+ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+}
+BASH_FUNC_module%%=() {  local _mlredir=0;
+ if [ -n "${MODULES_REDIRECT_OUTPUT+x}" ]; then
+ if [ "$MODULES_REDIRECT_OUTPUT" = '0' ]; then
+ _mlredir=0;
+ else
+ if [ "$MODULES_REDIRECT_OUTPUT" = '1' ]; then
+ _mlredir=1;
+ fi;
+ fi;
+ fi;
+ case " $@ " in 
+ *' --no-redirect '*)
+ _mlredir=0
+ ;;
+ *' --redirect '*)
+ _mlredir=1
+ ;;
+ esac;
+ if [ $_mlredir -eq 0 ]; then
+ _module_raw "$@";
+ else
+ _module_raw "$@" 2>&1;
+ fi
+}
+BASH_FUNC__module_raw%%=() {  eval "$(/usr/bin/tclsh '/usr/share/Modules/libexec/modulecmd.tcl' bash "$@")";
+ _mlstatus=$?;
+ return $_mlstatus
+}
+_=/usr/bin/printenv
+LOCAL FILES
+total 14568
+-r--r--r--. 1 afzal enp 14906764 Apr 17 11:54 dana_rest_bggen_031057_006.hddm
+-rw-r--r--. 1 afzal enp     4018 Apr 18 06:05 __swif_env__
+-rw-r--r--. 1 afzal enp        0 Apr 18 06:05 __swif_err__
+-rw-r--r--. 1 afzal enp        0 Apr 18 06:05 __swif_out__
+-rwxr--r--. 1 afzal enp     1242 Apr 18 05:48 __swif_wrapper__
+total 14576
+-r--r--r--. 1 afzal enp 14906764 Apr 17 11:54 dana_rest_bggen_031057_006.hddm
+-rwxr-xr-x. 1 afzal enp     1147 Apr 18 06:05 gluexrunscript.sh
+-rw-r--r--. 1 afzal enp      120 Apr 18 06:05 jana_pi0pippim_bggen.config
+-rw-r--r--. 1 afzal enp     4018 Apr 18 06:05 __swif_env__
+-rw-r--r--. 1 afzal enp        0 Apr 18 06:05 __swif_err__
+-rw-r--r--. 1 afzal enp        0 Apr 18 06:05 __swif_out__
+-rwxr--r--. 1 afzal enp     1242 Apr 18 05:48 __swif_wrapper__
+I am running in singularity.
+/w/halld-scshelf2101/home/afzal/scripts/bggen/analysis-2017_01-ver56.xml does not exist! Abort.
+Return Code =  9
