@@ -1,0 +1,3 @@
+$MCWRAPPER_CENTRAL/gluex_MC.py MC_ppippippimpim_phsp.config 030274-031057 10000000 per_file=100000 batch=2
+$MCWRAPPER_CENTRAL/gluex_MC.py MC_ppippippimpim_phsp_mixed.config 030274-031057 10000000 per_file=100000 batch=2
+$MCWRAPPER_CENTRAL/gluex_MC.py MC_ppippimrho_pippim.config 030274-031057 10000000 per_file=100000 batch=2
