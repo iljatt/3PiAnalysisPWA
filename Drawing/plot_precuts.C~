@@ -1,0 +1,180 @@
+
+void defstyle(TH1 *histo)
+{
+
+    histo->SetMarkerSize(0.5);
+    histo->SetMarkerStyle(20);
+    histo->SetTitleOffset(0.9,"X");
+    histo->SetTitleSize(0.05,"X");
+    histo->SetTitleOffset(1.3,"Y");
+    histo->SetTitleSize(0.04,"Y"); 
+    histo->SetLineColor(kBlack);
+    histo->SetLineWidth(2);    
+
+ }
+
+
+
+
+
+void plot_precuts()
+{
+
+
+   TFile *file = TFile::Open("/work/halld/home/ilbelov/DataSpring2017/flattree_2pip2pim_sum_30274_31057_precuts.root","READ");
+   TTree *tree = (TTree*) file->TFile::Get("kin");
+   if (!tree) return;
+
+
+  const Int_t DEFBINS = 200;
+  
+  TH1D *h_mmiss = new TH1D("h1","",DEFBINS,-0.04,0.04);
+  TH1F *h_en  = new TH1F("h2","",100,7.5,9.5);
+  TH1D *h_chi2ndof  = new TH1D("h3","",DEFBINS,0.,8.);
+  TH1D *h_minust = new TH1D("h4","",DEFBINS,0.,3.);
+  TH1D *h_pvz = new TH1D("h5","",DEFBINS,40.,90.);
+  TH1D *h_pvr = new TH1D("h6","",DEFBINS,0.,1.5);
+  TH1D *h_rftime = new TH1D("h7","",DEFBINS,-22.,22.);
+  TH1D *h_momdiff = new TH1D("h8","",DEFBINS,0.,7.);
+
+  
+  
+  h_mmiss->GetXaxis()->SetTitle("M_{miss}^{2}  [GeV^2]");
+  h_en->GetXaxis()->SetTitle("E_{beam}  [GeV]");
+  h_chi2ndof->GetXaxis()->SetTitle("#chi^{2}/N_{d.o.f.}");
+  h_minust->GetXaxis()->SetTitle("-t  [GeV^{2}]");
+  h_pvz->GetXaxis()->SetTitle("z_{PV}  [cm]");
+  h_pvr->GetXaxis()->SetTitle("R_{PV}  [cm]");
+  h_rftime->GetXaxis()->SetTitle("#Delta t_{RF}  [ns]");
+  h_momdiff->GetXaxis()->SetTitle("|p(#pi^{+}_{fast})|-|p(#pi^{+}_{slow})|  [GeV]");
+
+  
+
+  h_mmiss->GetYaxis()->SetTitle(" Events/ 0.0004 [GeV^{2}]");
+  h_en->GetYaxis()->SetTitle(" Events/ 0.015 [GeV]");
+  h_chi2ndof->GetYaxis()->SetTitle("Events/ 0.05");
+  h_minust->GetYaxis()->SetTitle("Events/ 0.02 [GeV^{2}]");
+  h_pvz->GetYaxis()->SetTitle("Events/  0.25 [cm]");
+  h_pvr->GetYaxis()->SetTitle("Events/ 0.0075 [cm]");
+  h_rftime->GetYaxis()->SetTitle("Events/ 0.22 [ns]");
+
+  
+    
+   
+   
+ //******************Usage of TTreeReader*************************                                                                                                                 
+  TTreeReader *myReader = new TTreeReader(tree);
+  ULong64_t ientry,nevents = myReader->TTreeReader::GetEntries(true);
+  
+  
+  
+  TTreeReaderValue <Double_t> mmiss(*myReader,"Miss_M2");
+  TTreeReaderValue <Float_t> en(*myReader,"E_Beam");
+  TTreeReaderValue <Double_t> chi2Ndof(*myReader,"Chi2Ndof");
+  TTreeReaderValue <Double_t> tvar(*myReader,"tvar_U1");
+  TTreeReaderValue <Double_t> pvz(*myReader,"PV_Meas_Z");
+  TTreeReaderValue <Double_t> pvx(*myReader,"PV_Meas_X");
+  TTreeReaderValue <Double_t> pvy(*myReader,"PV_Meas_Y");
+  TTreeReaderValue <Double_t> dt_rft(*myReader,"DT_RFTime");
+  TTreeReaderValue <TLorentzVector> piplus1_p4(*myReader,"Piplus1_P4");
+  TTreeReaderValue <TLorentzVector> piplus2_p4(*myReader,"Piplus2_P4");
+
+  
+    
+
+    while (myReader->Next()){
+    ientry = myReader->GetCurrentEntry();
+
+    if (*tvar >= -2.) h_minust->Fill(-*tvar);
+    h_mmiss->Fill(*mmiss);
+    h_en->Fill(*en);
+    h_chi2ndof->Fill(*chi2Ndof);
+    h_pvz->Fill(*pvz);
+    h_pvr->Fill(TMath::Sqrt((*pvx)*(*pvx)+(*pvy)*(*pvy)));
+    h_rftime->Fill(*dt_rft);
+    h_momdiff->Fill((*piplus1_p4).Vect().Mag()-(*piplus2_p4).Vect().Mag());
+    }
+    
+
+    defstyle(h_mmiss);
+    defstyle(h_en);
+    defstyle(h_chi2ndof);
+    defstyle(h_minust);
+    defstyle(h_pvz);
+    defstyle(h_pvr);
+    defstyle(h_rftime);
+    defstyle(h_momdiff);
+    
+
+    gROOT->SetBatch(kTRUE);
+    gStyle->SetOptStat(0);
+
+
+
+    
+    
+      TCanvas* canva1 = new TCanvas("c1","c1",15,10,850,300);
+      canva1->Divide(3);
+      
+      canva1->cd(1); h_en->Draw("P");
+      canva1->cd(2); h_chi2ndof->Draw("P");
+      canva1->cd(3); h_minust->Draw("P");
+      
+      //      canva1->Print("precuts_part1.pdf", "pdf");
+      canva1->Close();
+
+      
+      
+      TCanvas* canva2 = new TCanvas("c2","c2",15,10,850,300);
+      canva2->Divide(3);      
+      canva2->cd(1); h_mmiss->Draw("P");
+      canva2->cd(2); h_pvz->Draw("P");
+      canva2->cd(3); h_pvr->Draw("P");
+
+      
+      //      canva2->Print("precuts_part2.pdf", "pdf");
+      canva2->Close();
+
+
+
+      TCanvas* canva3 = new TCanvas("c3","c3",15,10,1150,300);
+      canva3->Divide(4);
+      
+      canva3->cd(1); h_en->Draw("P");
+      canva3->cd(2); h_chi2ndof->Draw("P");
+      canva3->cd(3); h_minust->Draw("P");
+      canva3->cd(4); h_mmiss->Draw("P");
+      
+      //       canva3->Print("precuts_part3.pdf", "pdf");
+      canva3->Close();
+
+      
+      TCanvas* canva4 = new TCanvas("c4","c4",15,10,400,300);
+      h_rftime->SetFillColor(kBlack);
+      h_rftime->SetFillStyle(3005);
+      h_rftime->Draw("HIST F");
+      
+      //      canva4->Print("dt_rftime.pdf", "pdf");
+      canva4->Close();
+
+
+      
+      TCanvas* canva5 = new TCanvas("c5","c5",15,10,400,300);
+      h_momdiff->SetTitleSize(0.05,"X");
+      h_momdiff->Draw("HIST");
+      TLine *vline = new TLine(0.4,0.,0.4,canva5->GetUymax());
+      vline->SetLineColor(kRed); vline->SetLineWidth(3); vline->SetLineStyle(kDashed);
+      vline->Draw("same");
+      
+      canva5->Print("momdiff.pdf", "pdf");
+      canva5->Close();
+
+
+      
+      
+
+    file->Close();    
+
+
+
+}
