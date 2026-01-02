@@ -1,0 +1,84 @@
+// macro to process analysis TTree with TSelector
+#include <iostream> 
+
+
+#include "TFile.h"
+#include "TTree.h"
+#include "TString.h"
+#include "TSystem.h"
+#include "TProof.h"
+
+#include "/work/halld/home/ilbelov/DPROOFLiteManager.h"
+
+
+
+void runDSelsPROOFLite(unsigned int Proof_Nthreads = 8) 
+{
+
+  /*
+  TString runNumber = "4";
+  const char *sampleDir = "/volatile/halld/home/ilbelov/TestDataSpring2018/merged/";
+  const char *treeName = "pippippimpim__B4_Tree";
+  const char *myDSelector = "/work/halld/home/ilbelov/RunDSels/DSelData_2pip2pim.C";
+  */
+
+  
+  TString runNumber = "3";
+  const char *sampleDir = "/work/osgpool/halld/REQUESTED_MC/MC_ppippippimpim_phsp_mask011_2017-01_70M_4263/root/trees/tree_pippippimpim__B4_gen_amp_V2/";
+  const char *treeName = "pippippimpim__B4_Tree";
+  const char *myDSelector = "/work/halld/home/ilbelov/RunDSels/DSelMC_2pip2pim.C";
+
+  
+  
+  // Load DSelector library
+  gROOT->ProcessLine(".x $ROOT_ANALYSIS_HOME/scripts/Load_DSelector.C");
+  std::cout << "The DSelectors library is loaded" << endl;
+
+
+  //sampleDir += Form("0%s/", runNumber.Data());
+  //if(myPath.Contains("thrown")) treeName = "Thrown_Tree"; 
+
+  
+  cout << "Now running selector on files in: " << sampleDir <<endl;
+ 
+
+  TChain *chain = new TChain(treeName);
+  TSystemDirectory dir(sampleDir, sampleDir);
+  TList *files = dir.GetListOfFiles();
+  int ifile = 0;
+  if(files) {
+	  TSystemFile *file;
+	  TString fileName;
+	  TIter next(files);
+	  cout << "Found files are:" << endl;  
+
+	  // Loop over files
+	  while ((file=(TSystemFile*)next())) {
+		  fileName = file->GetName();
+		  if(fileName.Contains(runNumber)) {
+			  cout << fileName << endl;
+			  
+			  // Check if file corrupted
+			  TFile f(sampleDir+fileName);
+			  if(f.TestBit(TFile::kRecovered)) {
+				  cout<<"file corrupted -> skipping"<<endl;
+				  continue;
+			  }
+			  if(f.IsZombie()) {
+				  cout<<"file is a Zombie -> skipping"<<endl;
+				  continue;
+			  }
+			  
+		
+			  chain->Add(sampleDir+fileName);
+			  ifile++;
+		  }
+	  }
+	  
+	 cout<<"total entries in TChain = "<<chain->GetEntries()<<" from "<<ifile<<" files"<<endl;
+  	 DPROOFLiteManager::Process_Chain(chain, Form("%s+", myDSelector), Proof_Nthreads, "", "", "");
+
+  }
+
+  return;
+}

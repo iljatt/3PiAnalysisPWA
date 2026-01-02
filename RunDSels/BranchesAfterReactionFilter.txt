@@ -1,0 +1,496 @@
+******************************************************************************
+*Tree    :pippippimpim__B4_Tree: pippippimpim__B4_Tree                                  *
+*Entries :    11546 : Total =        52387546 bytes  File  Size =   16153559 *
+*        :          : Tree compression factor =   3.24                       *
+******************************************************************************
+*Br    0 :RunNumber : RunNumber/i                                            *
+*Entries :    11546 : Total  Size=      46964 bytes  File Size  =        615 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  75.55     *
+*............................................................................*
+*Br    1 :EventNumber : EventNumber/l                                        *
+*Entries :    11546 : Total  Size=      93170 bytes  File Size  =      35682 *
+*Baskets :        3 : Basket Size=      62976 bytes  Compression=   2.60     *
+*............................................................................*
+*Br    2 :L1TriggerBits : L1TriggerBits/i                                    *
+*Entries :    11546 : Total  Size=      46992 bytes  File Size  =       5757 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=   8.07     *
+*............................................................................*
+*Br    3 :X4_Production : TLorentzVector                                     *
+*Entries :    11546 : Total  Size=     971823 bytes  File Size  =     406361 *
+*Baskets :       13 : Basket Size=     339968 bytes  Compression=   2.39     *
+*............................................................................*
+*Br    4 :NumBeam   : NumBeam/i                                              *
+*Entries :    11546 : Total  Size=      46950 bytes  File Size  =       2004 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  23.18     *
+*............................................................................*
+*Br    5 :Beam__PID : Beam__PID[NumBeam]/I                                   *
+*Entries :    11546 : Total  Size=      95389 bytes  File Size  =      14877 *
+*Baskets :        4 : Basket Size=      54272 bytes  Compression=   6.37     *
+*............................................................................*
+*Br    6 :Beam__X4_Measured : TClonesArray                                   *
+*Entries :    11546 : Total  Size=    1652254 bytes  File Size  =     428728 *
+*Baskets :       20 : Basket Size=     574976 bytes  Compression=   3.85     *
+*............................................................................*
+*Br    7 :Beam__P4_Measured : TClonesArray                                   *
+*Entries :    11546 : Total  Size=    1652254 bytes  File Size  =     111716 *
+*Baskets :       20 : Basket Size=     574976 bytes  Compression=  14.78     *
+*............................................................................*
+*Br    8 :NumNeutralHypos : NumNeutralHypos/i                                *
+*Entries :    11546 : Total  Size=      47006 bytes  File Size  =        597 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  77.86     *
+*............................................................................*
+*Br    9 :NeutralHypo__NeutralID : NeutralHypo__NeutralID[NumNeutralHypos]/I *
+*Entries :    11546 : Total  Size=      47203 bytes  File Size  =        666 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.86     *
+*............................................................................*
+*Br   10 :NeutralHypo__PID : NeutralHypo__PID[NumNeutralHypos]/I             *
+*Entries :    11546 : Total  Size=      47161 bytes  File Size  =        648 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  71.77     *
+*............................................................................*
+*Br   11 :NeutralHypo__X4_Measured : TClonesArray                            *
+*Entries :    11546 : Total  Size=     867947 bytes  File Size  =      34120 *
+*Baskets :       12 : Basket Size=     304640 bytes  Compression=  25.42     *
+*............................................................................*
+*Br   12 :NeutralHypo__P4_Measured : TClonesArray                            *
+*Entries :    11546 : Total  Size=     867947 bytes  File Size  =      34120 *
+*Baskets :       12 : Basket Size=     304640 bytes  Compression=  25.42     *
+*............................................................................*
+*Br   13 :NeutralHypo__Beta_Timing :                                         *
+*         | NeutralHypo__Beta_Timing[NumNeutralHypos]/F                      *
+*Entries :    11546 : Total  Size=      47224 bytes  File Size  =        671 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.35     *
+*............................................................................*
+*Br   14 :NeutralHypo__ChiSq_Timing :                                        *
+*         | NeutralHypo__ChiSq_Timing[NumNeutralHypos]/F                     *
+*Entries :    11546 : Total  Size=      47231 bytes  File Size  =        674 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.04     *
+*............................................................................*
+*Br   15 :NeutralHypo__NDF_Timing :                                          *
+*         | NeutralHypo__NDF_Timing[NumNeutralHypos]/i                       *
+*Entries :    11546 : Total  Size=      47210 bytes  File Size  =        668 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.65     *
+*............................................................................*
+*Br   16 :NeutralHypo__X4_Shower : TClonesArray                              *
+*Entries :    11546 : Total  Size=     867917 bytes  File Size  =      34037 *
+*Baskets :       12 : Basket Size=     304640 bytes  Compression=  25.48     *
+*............................................................................*
+*Br   17 :NeutralHypo__ShowerQuality :                                       *
+*         | NeutralHypo__ShowerQuality[NumNeutralHypos]/F                    *
+*Entries :    11546 : Total  Size=      47238 bytes  File Size  =        677 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  68.74     *
+*............................................................................*
+*Br   18 :NeutralHypo__Energy_BCAL :                                         *
+*         | NeutralHypo__Energy_BCAL[NumNeutralHypos]/F                      *
+*Entries :    11546 : Total  Size=      47224 bytes  File Size  =        671 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.35     *
+*............................................................................*
+*Br   19 :NeutralHypo__Energy_BCALPreshower :                                *
+*         | NeutralHypo__Energy_BCALPreshower[NumNeutralHypos]/F             *
+*Entries :    11546 : Total  Size=      47287 bytes  File Size  =        696 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  66.90     *
+*............................................................................*
+*Br   20 :NeutralHypo__SigLong_BCAL :                                        *
+*         | NeutralHypo__SigLong_BCAL[NumNeutralHypos]/F                     *
+*Entries :    11546 : Total  Size=      47231 bytes  File Size  =        674 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.04     *
+*............................................................................*
+*Br   21 :NeutralHypo__SigTheta_BCAL :                                       *
+*         | NeutralHypo__SigTheta_BCAL[NumNeutralHypos]/F                    *
+*Entries :    11546 : Total  Size=      47238 bytes  File Size  =        677 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  68.74     *
+*............................................................................*
+*Br   22 :NeutralHypo__SigTrans_BCAL :                                       *
+*         | NeutralHypo__SigTrans_BCAL[NumNeutralHypos]/F                    *
+*Entries :    11546 : Total  Size=      47238 bytes  File Size  =        677 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  68.74     *
+*............................................................................*
+*Br   23 :NeutralHypo__RMSTime_BCAL :                                        *
+*         | NeutralHypo__RMSTime_BCAL[NumNeutralHypos]/F                     *
+*Entries :    11546 : Total  Size=      47231 bytes  File Size  =        674 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.04     *
+*............................................................................*
+*Br   24 :NeutralHypo__Energy_FCAL :                                         *
+*         | NeutralHypo__Energy_FCAL[NumNeutralHypos]/F                      *
+*Entries :    11546 : Total  Size=      47224 bytes  File Size  =        671 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  69.35     *
+*............................................................................*
+*Br   25 :NeutralHypo__TrackBCAL_DeltaPhi :                                  *
+*         | NeutralHypo__TrackBCAL_DeltaPhi[NumNeutralHypos]/F               *
+*Entries :    11546 : Total  Size=      47273 bytes  File Size  =        691 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  67.37     *
+*............................................................................*
+*Br   26 :NeutralHypo__TrackBCAL_DeltaZ :                                    *
+*         | NeutralHypo__TrackBCAL_DeltaZ[NumNeutralHypos]/F                 *
+*Entries :    11546 : Total  Size=      47259 bytes  File Size  =        686 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  67.85     *
+*............................................................................*
+*Br   27 :NeutralHypo__TrackFCAL_DOCA :                                      *
+*         | NeutralHypo__TrackFCAL_DOCA[NumNeutralHypos]/F                   *
+*Entries :    11546 : Total  Size=      47245 bytes  File Size  =        680 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  68.44     *
+*............................................................................*
+*Br   28 :NeutralHypo__PhotonRFDeltaTVar :                                   *
+*         | NeutralHypo__PhotonRFDeltaTVar[NumNeutralHypos]/F                *
+*Entries :    11546 : Total  Size=      47266 bytes  File Size  =        689 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  67.56     *
+*............................................................................*
+*Br   29 :NumChargedHypos : NumChargedHypos/i                                *
+*Entries :    11546 : Total  Size=      47006 bytes  File Size  =       3860 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  12.04     *
+*............................................................................*
+*Br   30 :ChargedHypo__TrackID : ChargedHypo__TrackID[NumChargedHypos]/I     *
+*Entries :    11546 : Total  Size=     287813 bytes  File Size  =      53289 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   5.39     *
+*............................................................................*
+*Br   31 :ChargedHypo__PID : ChargedHypo__PID[NumChargedHypos]/I             *
+*Entries :    11546 : Total  Size=     287765 bytes  File Size  =      62169 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   4.62     *
+*............................................................................*
+*Br   32 :ChargedHypo__X4_Measured : TClonesArray                            *
+*Entries :    11546 : Total  Size=    4774835 bytes  File Size  =    1451406 *
+*Baskets :       55 : Basket Size=    1326592 bytes  Compression=   3.29     *
+*............................................................................*
+*Br   33 :ChargedHypo__P4_Measured : TClonesArray                            *
+*Entries :    11546 : Total  Size=    4774835 bytes  File Size  =    1597561 *
+*Baskets :       55 : Basket Size=    1326592 bytes  Compression=   2.99     *
+*............................................................................*
+*Br   34 :ChargedHypo__NDF_Tracking :                                        *
+*         | ChargedHypo__NDF_Tracking[NumChargedHypos]/i                     *
+*Entries :    11546 : Total  Size=     287873 bytes  File Size  =      93996 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   3.06     *
+*............................................................................*
+*Br   35 :ChargedHypo__ChiSq_Tracking :                                      *
+*         | ChargedHypo__ChiSq_Tracking[NumChargedHypos]/F                   *
+*Entries :    11546 : Total  Size=     287904 bytes  File Size  =     240459 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.19     *
+*............................................................................*
+*Br   36 :ChargedHypo__NDF_DCdEdx :                                          *
+*         | ChargedHypo__NDF_DCdEdx[NumChargedHypos]/i                       *
+*Entries :    11546 : Total  Size=     287849 bytes  File Size  =      50368 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   5.70     *
+*............................................................................*
+*Br   37 :ChargedHypo__ChiSq_DCdEdx :                                        *
+*         | ChargedHypo__ChiSq_DCdEdx[NumChargedHypos]/F                     *
+*Entries :    11546 : Total  Size=     287880 bytes  File Size  =     244709 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.17     *
+*............................................................................*
+*Br   38 :ChargedHypo__dEdx_CDC : ChargedHypo__dEdx_CDC[NumChargedHypos]/F   *
+*Entries :    11546 : Total  Size=     287832 bytes  File Size  =     201969 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.42     *
+*............................................................................*
+*Br   39 :ChargedHypo__dEdx_CDC_integral :                                   *
+*         | ChargedHypo__dEdx_CDC_integral[NumChargedHypos]/F                *
+*Entries :    11546 : Total  Size=     287940 bytes  File Size  =     203171 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.41     *
+*............................................................................*
+*Br   40 :ChargedHypo__dEdx_FDC : ChargedHypo__dEdx_FDC[NumChargedHypos]/F   *
+*Entries :    11546 : Total  Size=     287832 bytes  File Size  =     162869 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.76     *
+*............................................................................*
+*Br   41 :ChargedHypo__HitTime : ChargedHypo__HitTime[NumChargedHypos]/F     *
+*Entries :    11546 : Total  Size=     287820 bytes  File Size  =     229092 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.25     *
+*............................................................................*
+*Br   42 :ChargedHypo__RFDeltaTVar :                                         *
+*         | ChargedHypo__RFDeltaTVar[NumChargedHypos]/F                      *
+*Entries :    11546 : Total  Size=     287868 bytes  File Size  =      62757 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   4.58     *
+*............................................................................*
+*Br   43 :ChargedHypo__Beta_Timing :                                         *
+*         | ChargedHypo__Beta_Timing[NumChargedHypos]/F                      *
+*Entries :    11546 : Total  Size=     287868 bytes  File Size  =     226884 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.27     *
+*............................................................................*
+*Br   44 :ChargedHypo__ChiSq_Timing :                                        *
+*         | ChargedHypo__ChiSq_Timing[NumChargedHypos]/F                     *
+*Entries :    11546 : Total  Size=     287880 bytes  File Size  =     249333 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.15     *
+*............................................................................*
+*Br   45 :ChargedHypo__NDF_Timing :                                          *
+*         | ChargedHypo__NDF_Timing[NumChargedHypos]/i                       *
+*Entries :    11546 : Total  Size=     287849 bytes  File Size  =      32573 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   8.82     *
+*............................................................................*
+*Br   46 :ChargedHypo__dEdx_TOF : ChargedHypo__dEdx_TOF[NumChargedHypos]/F   *
+*Entries :    11546 : Total  Size=     287832 bytes  File Size  =     121346 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   2.37     *
+*............................................................................*
+*Br   47 :ChargedHypo__dEdx_ST : ChargedHypo__dEdx_ST[NumChargedHypos]/F     *
+*Entries :    11546 : Total  Size=     287820 bytes  File Size  =     221181 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.30     *
+*............................................................................*
+*Br   48 :ChargedHypo__Energy_BCAL :                                         *
+*         | ChargedHypo__Energy_BCAL[NumChargedHypos]/F                      *
+*Entries :    11546 : Total  Size=     287868 bytes  File Size  =     152158 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.89     *
+*............................................................................*
+*Br   49 :ChargedHypo__Energy_BCALPreshower :                                *
+*         | ChargedHypo__Energy_BCALPreshower[NumChargedHypos]/F             *
+*Entries :    11546 : Total  Size=     287976 bytes  File Size  =     151510 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.90     *
+*............................................................................*
+*Br   50 :ChargedHypo__SigLong_BCAL :                                        *
+*         | ChargedHypo__SigLong_BCAL[NumChargedHypos]/F                     *
+*Entries :    11546 : Total  Size=     287880 bytes  File Size  =     152184 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.89     *
+*............................................................................*
+*Br   51 :ChargedHypo__SigTheta_BCAL :                                       *
+*         | ChargedHypo__SigTheta_BCAL[NumChargedHypos]/F                    *
+*Entries :    11546 : Total  Size=     287892 bytes  File Size  =     153959 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.87     *
+*............................................................................*
+*Br   52 :ChargedHypo__SigTrans_BCAL :                                       *
+*         | ChargedHypo__SigTrans_BCAL[NumChargedHypos]/F                    *
+*Entries :    11546 : Total  Size=     287892 bytes  File Size  =     146140 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.97     *
+*............................................................................*
+*Br   53 :ChargedHypo__RMSTime_BCAL :                                        *
+*         | ChargedHypo__RMSTime_BCAL[NumChargedHypos]/F                     *
+*Entries :    11546 : Total  Size=     287880 bytes  File Size  =     148737 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.93     *
+*............................................................................*
+*Br   54 :ChargedHypo__Energy_FCAL :                                         *
+*         | ChargedHypo__Energy_FCAL[NumChargedHypos]/F                      *
+*Entries :    11546 : Total  Size=     287868 bytes  File Size  =     119698 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   2.40     *
+*............................................................................*
+*Br   55 :ChargedHypo__E1E9_FCAL : ChargedHypo__E1E9_FCAL[NumChargedHypos]/F *
+*Entries :    11546 : Total  Size=     287844 bytes  File Size  =     118920 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   2.41     *
+*............................................................................*
+*Br   56 :ChargedHypo__E9E25_FCAL :                                          *
+*         | ChargedHypo__E9E25_FCAL[NumChargedHypos]/F                       *
+*Entries :    11546 : Total  Size=     287856 bytes  File Size  =      86030 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   3.34     *
+*............................................................................*
+*Br   57 :ChargedHypo__SumU_FCAL : ChargedHypo__SumU_FCAL[NumChargedHypos]/F *
+*Entries :    11546 : Total  Size=     287844 bytes  File Size  =     119874 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   2.40     *
+*............................................................................*
+*Br   58 :ChargedHypo__SumV_FCAL : ChargedHypo__SumV_FCAL[NumChargedHypos]/F *
+*Entries :    11546 : Total  Size=     287844 bytes  File Size  =     120521 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   2.38     *
+*............................................................................*
+*Br   59 :ChargedHypo__TrackBCAL_DeltaPhi :                                  *
+*         | ChargedHypo__TrackBCAL_DeltaPhi[NumChargedHypos]/F               *
+*Entries :    11546 : Total  Size=     287952 bytes  File Size  =     160654 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.79     *
+*............................................................................*
+*Br   60 :ChargedHypo__TrackBCAL_DeltaZ :                                    *
+*         | ChargedHypo__TrackBCAL_DeltaZ[NumChargedHypos]/F                 *
+*Entries :    11546 : Total  Size=     287928 bytes  File Size  =     160416 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   1.79     *
+*............................................................................*
+*Br   61 :ChargedHypo__TrackFCAL_DOCA :                                      *
+*         | ChargedHypo__TrackFCAL_DOCA[NumChargedHypos]/F                   *
+*Entries :    11546 : Total  Size=     287904 bytes  File Size  =     120235 *
+*Baskets :        8 : Basket Size=     108544 bytes  Compression=   2.39     *
+*............................................................................*
+*Br   62 :NumUnusedTracks : NumUnusedTracks/b                                *
+*Entries :    11546 : Total  Size=      12362 bytes  File Size  =       3748 *
+*Baskets :        3 : Basket Size=      35328 bytes  Compression=   3.16     *
+*............................................................................*
+*Br   63 :NumCombos : NumCombos/i                                            *
+*Entries :    11546 : Total  Size=      46968 bytes  File Size  =       4346 *
+*Baskets :        3 : Basket Size=      47104 bytes  Compression=  10.69     *
+*............................................................................*
+*Br   64 :IsComboCut : IsComboCut[NumCombos]/O                               *
+*Entries :    11546 : Total  Size=      61035 bytes  File Size  =      17053 *
+*Baskets :        4 : Basket Size=      49152 bytes  Compression=   3.54     *
+*............................................................................*
+*Br   65 :RFTime_Measured : RFTime_Measured[NumCombos]/F                     *
+*Entries :    11546 : Total  Size=     102592 bytes  File Size  =      59078 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.73     *
+*............................................................................*
+*Br   66 :ChiSq_KinFit : ChiSq_KinFit[NumCombos]/F                           *
+*Entries :    11546 : Total  Size=     102568 bytes  File Size  =      68505 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.49     *
+*............................................................................*
+*Br   67 :NDF_KinFit : NDF_KinFit[NumCombos]/i                               *
+*Entries :    11546 : Total  Size=     102545 bytes  File Size  =      15378 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   6.63     *
+*............................................................................*
+*Br   68 :Energy_UnusedShowers : Energy_UnusedShowers[NumCombos]/F           *
+*Entries :    11546 : Total  Size=     102632 bytes  File Size  =      55085 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.85     *
+*............................................................................*
+*Br   69 :SumPMag_UnusedTracks : SumPMag_UnusedTracks[NumCombos]/F           *
+*Entries :    11546 : Total  Size=     102632 bytes  File Size  =      42492 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   2.40     *
+*............................................................................*
+*Br   70 :SumP3_UnusedTracks : TClonesArray                                  *
+*Entries :    11546 : Total  Size=    1297272 bytes  File Size  =     153582 *
+*Baskets :       17 : Basket Size=     452608 bytes  Compression=   8.44     *
+*............................................................................*
+*Br   71 :ComboBeam__BeamIndex : ComboBeam__BeamIndex[NumCombos]/I           *
+*Entries :    11546 : Total  Size=     102625 bytes  File Size  =      17462 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   5.84     *
+*............................................................................*
+*Br   72 :ComboBeam__P4_KinFit : TClonesArray                                *
+*Entries :    11546 : Total  Size=    1768480 bytes  File Size  =     127748 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=  13.84     *
+*............................................................................*
+*Br   73 :ComboBeam__X4_KinFit : TClonesArray                                *
+*Entries :    11546 : Total  Size=    1768480 bytes  File Size  =     506765 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.49     *
+*............................................................................*
+*Br   74 :PiPlus1__ChargedIndex : PiPlus1__ChargedIndex[NumCombos]/I         *
+*Entries :    11546 : Total  Size=     102633 bytes  File Size  =      28796 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   3.54     *
+*............................................................................*
+*Br   75 :PiPlus1__Beta_Timing_Measured :                                    *
+*         | PiPlus1__Beta_Timing_Measured[NumCombos]/F                       *
+*Entries :    11546 : Total  Size=     102704 bytes  File Size  =      60825 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.68     *
+*............................................................................*
+*Br   76 :PiPlus1__ChiSq_Timing_Measured :                                   *
+*         | PiPlus1__ChiSq_Timing_Measured[NumCombos]/F                      *
+*Entries :    11546 : Total  Size=     102712 bytes  File Size  =      64901 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.57     *
+*............................................................................*
+*Br   77 :PiPlus1__Beta_Timing_KinFit :                                      *
+*         | PiPlus1__Beta_Timing_KinFit[NumCombos]/F                         *
+*Entries :    11546 : Total  Size=     102688 bytes  File Size  =      63237 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.61     *
+*............................................................................*
+*Br   78 :PiPlus1__ChiSq_Timing_KinFit :                                     *
+*         | PiPlus1__ChiSq_Timing_KinFit[NumCombos]/F                        *
+*Entries :    11546 : Total  Size=     102696 bytes  File Size  =      69152 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.48     *
+*............................................................................*
+*Br   79 :PiPlus1__P4_KinFit : TClonesArray                                  *
+*Entries :    11546 : Total  Size=    1768432 bytes  File Size  =     505389 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.50     *
+*............................................................................*
+*Br   80 :PiPlus1__X4_KinFit : TClonesArray                                  *
+*Entries :    11546 : Total  Size=    1768432 bytes  File Size  =     504317 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.51     *
+*............................................................................*
+*Br   81 :PiPlus2__ChargedIndex : PiPlus2__ChargedIndex[NumCombos]/I         *
+*Entries :    11546 : Total  Size=     102633 bytes  File Size  =      28812 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   3.54     *
+*............................................................................*
+*Br   82 :PiPlus2__Beta_Timing_Measured :                                    *
+*         | PiPlus2__Beta_Timing_Measured[NumCombos]/F                       *
+*Entries :    11546 : Total  Size=     102704 bytes  File Size  =      60834 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.68     *
+*............................................................................*
+*Br   83 :PiPlus2__ChiSq_Timing_Measured :                                   *
+*         | PiPlus2__ChiSq_Timing_Measured[NumCombos]/F                      *
+*Entries :    11546 : Total  Size=     102712 bytes  File Size  =      64899 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.57     *
+*............................................................................*
+*Br   84 :PiPlus2__Beta_Timing_KinFit :                                      *
+*         | PiPlus2__Beta_Timing_KinFit[NumCombos]/F                         *
+*Entries :    11546 : Total  Size=     102688 bytes  File Size  =      63278 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.61     *
+*............................................................................*
+*Br   85 :PiPlus2__ChiSq_Timing_KinFit :                                     *
+*         | PiPlus2__ChiSq_Timing_KinFit[NumCombos]/F                        *
+*Entries :    11546 : Total  Size=     102696 bytes  File Size  =      69166 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.47     *
+*............................................................................*
+*Br   86 :PiPlus2__P4_KinFit : TClonesArray                                  *
+*Entries :    11546 : Total  Size=    1768432 bytes  File Size  =     505187 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.50     *
+*............................................................................*
+*Br   87 :PiPlus2__X4_KinFit : TClonesArray                                  *
+*Entries :    11546 : Total  Size=    1768432 bytes  File Size  =     504179 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.51     *
+*............................................................................*
+*Br   88 :PiMinus1__ChargedIndex : PiMinus1__ChargedIndex[NumCombos]/I       *
+*Entries :    11546 : Total  Size=     102641 bytes  File Size  =      28556 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   3.57     *
+*............................................................................*
+*Br   89 :PiMinus1__Beta_Timing_Measured :                                   *
+*         | PiMinus1__Beta_Timing_Measured[NumCombos]/F                      *
+*Entries :    11546 : Total  Size=     102716 bytes  File Size  =      59756 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.71     *
+*............................................................................*
+*Br   90 :PiMinus1__ChiSq_Timing_Measured :                                  *
+*         | PiMinus1__ChiSq_Timing_Measured[NumCombos]/F                     *
+*Entries :    11546 : Total  Size=     102720 bytes  File Size  =      63790 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.60     *
+*............................................................................*
+*Br   91 :PiMinus1__Beta_Timing_KinFit :                                     *
+*         | PiMinus1__Beta_Timing_KinFit[NumCombos]/F                        *
+*Entries :    11546 : Total  Size=     102696 bytes  File Size  =      63127 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.62     *
+*............................................................................*
+*Br   92 :PiMinus1__ChiSq_Timing_KinFit :                                    *
+*         | PiMinus1__ChiSq_Timing_KinFit[NumCombos]/F                       *
+*Entries :    11546 : Total  Size=     102704 bytes  File Size  =      69237 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.47     *
+*............................................................................*
+*Br   93 :PiMinus1__P4_KinFit : TClonesArray                                 *
+*Entries :    11546 : Total  Size=    1768456 bytes  File Size  =     505406 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.50     *
+*............................................................................*
+*Br   94 :PiMinus1__X4_KinFit : TClonesArray                                 *
+*Entries :    11546 : Total  Size=    1768456 bytes  File Size  =     504549 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.50     *
+*............................................................................*
+*Br   95 :PiMinus2__ChargedIndex : PiMinus2__ChargedIndex[NumCombos]/I       *
+*Entries :    11546 : Total  Size=     102641 bytes  File Size  =      28583 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   3.57     *
+*............................................................................*
+*Br   96 :PiMinus2__Beta_Timing_Measured :                                   *
+*         | PiMinus2__Beta_Timing_Measured[NumCombos]/F                      *
+*Entries :    11546 : Total  Size=     102712 bytes  File Size  =      59664 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.71     *
+*............................................................................*
+*Br   97 :PiMinus2__ChiSq_Timing_Measured :                                  *
+*         | PiMinus2__ChiSq_Timing_Measured[NumCombos]/F                     *
+*Entries :    11546 : Total  Size=     102720 bytes  File Size  =      63797 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.60     *
+*............................................................................*
+*Br   98 :PiMinus2__Beta_Timing_KinFit :                                     *
+*         | PiMinus2__Beta_Timing_KinFit[NumCombos]/F                        *
+*Entries :    11546 : Total  Size=     102696 bytes  File Size  =      63040 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.62     *
+*............................................................................*
+*Br   99 :PiMinus2__ChiSq_Timing_KinFit :                                    *
+*         | PiMinus2__ChiSq_Timing_KinFit[NumCombos]/F                       *
+*Entries :    11546 : Total  Size=     102704 bytes  File Size  =      69126 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.48     *
+*............................................................................*
+*Br  100 :PiMinus2__P4_KinFit : TClonesArray                                 *
+*Entries :    11546 : Total  Size=    1768456 bytes  File Size  =     505506 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.50     *
+*............................................................................*
+*Br  101 :PiMinus2__X4_KinFit : TClonesArray                                 *
+*Entries :    11546 : Total  Size=    1768456 bytes  File Size  =     504218 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.51     *
+*............................................................................*
+*Br  102 :Proton__ChargedIndex : Proton__ChargedIndex[NumCombos]/I           *
+*Entries :    11546 : Total  Size=     102625 bytes  File Size  =      28663 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   3.56     *
+*............................................................................*
+*Br  103 :Proton__Beta_Timing_Measured :                                     *
+*         | Proton__Beta_Timing_Measured[NumCombos]/F                        *
+*Entries :    11546 : Total  Size=     102696 bytes  File Size  =      60914 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.67     *
+*............................................................................*
+*Br  104 :Proton__ChiSq_Timing_Measured :                                    *
+*         | Proton__ChiSq_Timing_Measured[NumCombos]/F                       *
+*Entries :    11546 : Total  Size=     102704 bytes  File Size  =      63819 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.60     *
+*............................................................................*
+*Br  105 :Proton__Beta_Timing_KinFit :                                       *
+*         | Proton__Beta_Timing_KinFit[NumCombos]/F                          *
+*Entries :    11546 : Total  Size=     102684 bytes  File Size  =      63103 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.62     *
+*............................................................................*
+*Br  106 :Proton__ChiSq_Timing_KinFit :                                      *
+*         | Proton__ChiSq_Timing_KinFit[NumCombos]/F                         *
+*Entries :    11546 : Total  Size=     102688 bytes  File Size  =      67188 *
+*Baskets :        4 : Basket Size=      55808 bytes  Compression=   1.52     *
+*............................................................................*
+*Br  107 :Proton__P4_KinFit : TClonesArray                                   *
+*Entries :    11546 : Total  Size=    1768408 bytes  File Size  =     505290 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.50     *
+*............................................................................*
+*Br  108 :Proton__X4_KinFit : TClonesArray                                   *
+*Entries :    11546 : Total  Size=    1768408 bytes  File Size  =     499988 *
+*Baskets :       21 : Basket Size=     615424 bytes  Compression=   3.54     *
+*............................................................................*

@@ -1,0 +1,370 @@
+#include "DSelThrown_2pip2pim.h"
+
+void DSelThrown_2pip2pim::Init(TTree *locTree)
+{
+	// USERS: IN THIS FUNCTION, ONLY MODIFY SECTIONS WITH A "USER" OR "EXAMPLE" LABEL. LEAVE THE REST ALONE.
+
+	// The Init() function is called when the selector needs to initialize a new tree or chain.
+	// Typically here the branch addresses and branch pointers of the tree will be set.
+	// Init() will be called many times when running on PROOF (once per file to be processed).
+
+	//USERS: SET OUTPUT FILE NAME //can be overriden by user in PROOF
+	dOutputFileName = "logfile_2pip2pim.root"; //"" for none
+	dOutputTreeFileName = ""; //"" for none
+	dFlatTreeFileName = "flattree_2pip2pim.root"; //output flat tree (one combo per tree entry), "" for none
+	dFlatTreeName = "kin"; //if blank, default name will be chosen
+
+
+	//dSaveDefaultFlatBranches = false; // False: don't save default branches, reduce disk footprint.
+	//dSaveTLorentzVectorsAsFundamentaFlatTree = false; // Default (or false): save particles as TLorentzVector objects. True: save as four doubles instead.
+
+	//Because this function gets called for each TTree in the TChain, we must be careful:
+		//We need to re-initialize the tree interface & branch wrappers, but don't want to recreate histograms
+	bool locInitializedPriorFlag = dInitializedFlag; //save whether have been initialized previously
+	DSelector::Init(locTree); //This must be called to initialize wrappers for each new TTree
+	//gDirectory now points to the output file with name dOutputFileName (if any)
+	if(locInitializedPriorFlag)
+		return; //have already created histograms, etc. below: exit
+
+	//	Get_ComboWrappers();
+	dPreviousRunNumber = 0;
+	
+	/******************************** EXAMPLE USER INITIALIZATION: STAND-ALONE HISTOGRAMS *******************************/
+	
+	//EXAMPLE MANUAL HISTOGRAMS:
+
+	//These are the histograms per event, not per combination
+	dHist_MissingMassSquared = new TH1I("MissingMassSquared", ";Missing Mass Squared (GeV/c^{2})^{2}", 600, -0.06, 0.06);
+	dHist_BeamEnergy = new TH1I("BeamEnergy", ";Beam Energy (GeV)", 600, 0.0, 12.0);
+	dHist_BeamEnergy_BestChiSq = new TH1I("BeamEnergy_BestChiSq", ";Beam Energy (GeV)", 600, 0.0, 12.0);
+
+	
+	//In the rest of this part we can define other histograms that we want to look at	
+
+
+
+	
+	/************************** EXAMPLE USER INITIALIZATION: CUSTOM OUTPUT BRANCHES - MAIN TREE *************************/	
+
+	SetupAmpTools_FlatTree();
+
+	//Weight from gen_amp_V2
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("MCWeight");
+
+	
+	
+	//Thrown four-momenta of the beam and final state particles 
+	dFlatTreeInterface->Create_Branch_NoSplitTObject<TLorentzVector>("Thrown_Beam_P4");
+	dFlatTreeInterface->Create_Branch_NoSplitTObject<TLorentzVector>("Thrown_PiplusL_P4");
+	dFlatTreeInterface->Create_Branch_NoSplitTObject<TLorentzVector>("Thrown_PiplusU_P4");
+	dFlatTreeInterface->Create_Branch_NoSplitTObject<TLorentzVector>("Thrown_Piminus1_P4");
+	dFlatTreeInterface->Create_Branch_NoSplitTObject<TLorentzVector>("Thrown_Piminus2_P4");
+	dFlatTreeInterface->Create_Branch_NoSplitTObject<TLorentzVector>("Thrown_Proton_P4");
+
+     
+	
+	//Momentum transfer, RFTime weight and other useful variables	
+	//	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("RFTimeWeight");
+	//	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("DT_RFTime");
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("DiamondSet");	
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("tvar");
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("EnBeam");
+
+
+	
+	
+	//Angles in the GJ and HF frames, calculated from the thrown momenta
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("CosThetaThrown_Piminus1Bachelor_GJ");	
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("PhiThrown_Piminus1Bachelor_GJ");
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("CosThetaThrown_Piminus2Bachelor_GJ");	
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("PhiThrown_Piminus2Bachelor_GJ");
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("CosThetaThrown_Piminus1Isobar_HF");	
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("PhiThrown_Piminus1Isobar_HF");	
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("CosThetaThrown_Piminus2Isobar_HF");	
+	dFlatTreeInterface->Create_Branch_Fundamental<Double_t>("PhiThrown_Piminus2Isobar_HF");	
+	
+ 
+	
+	
+	/************************************* ADVANCED EXAMPLE: CHOOSE BRANCHES TO READ ************************************/
+
+	//TO SAVE PROCESSING TIME
+		//If you know you don't need all of the branches/data, but just a subset of it, you can speed things up
+		//By default, for each event, the data is retrieved for all branches
+		//If you know you only need data for some branches, you can skip grabbing data from the branches you don't need
+		//Do this by doing something similar to the commented code below
+
+	//dFlatTreeInterface->Clear_GetEntryBranches(); //now get none
+	//dFlatTreeInterface->Register_GetEntryBranch("Proton__P4"); //manually set the branches you want
+
+
+}
+	
+
+Bool_t DSelThrown_2pip2pim::Process(Long64_t locEntry)
+{
+	// The Process() function is called for each entry in the tree. The entry argument
+	// specifies which entry in the currently loaded tree is to be processed.
+	//
+	// This function should contain the "body" of the analysis. It can contain
+	// simple or elaborate selection criteria, run algorithms on the data
+	// of the event and typically fill histograms.
+	//
+	// The processing can be stopped by calling Abort().
+	// Use fStatus to set the return value of TTree::Process().
+	// The return value is currently not used.
+
+	//CALL THIS FIRST
+	DSelector::Process(locEntry); //Gets the data from the tree for the entry
+
+	UInt_t locRunNumber = Get_RunNumber();
+	UInt_t locEventNumber = Get_EventNumber();
+
+	//	cout << "RUN " << locRunNumber << ", EVENT " << locEventNumber << endl;
+	//TLorentzVector locProductionX4 = Get_X4_Production();
+
+	/******************************************** GET POLARIZATION ORIENTATION ******************************************/
+
+	//Only if the run number changes
+	//RCDB environment must be setup in order for this to work! (Will return false otherwise)
+
+	if(locRunNumber != dPreviousRunNumber)
+	{
+		dIsPolarizedFlag = dAnalysisUtilities.Get_IsPolarizedBeam(locRunNumber, dIsPARAFlag);
+        	dAnalysisUtilities.Get_PolarizationAngle(locRunNumber, dBeamPolarizationAngle);
+		dPreviousRunNumber = locRunNumber;	
+		cout << "Beam polarization angle is: " << dBeamPolarizationAngle << " degrees." << endl;		  
+	}
+
+	
+	//Here we arrange polarization types in five different types
+
+	if(dBeamPolarizationAngle == (-1.0)) // 0 = amo, 1 = para 0, 2 = perp 90, 3 = para 135, 4 = perp 45
+		dDiamondSet = 0;
+	else if (dBeamPolarizationAngle == (0.0))
+		dDiamondSet = 1;
+	else if (dBeamPolarizationAngle == (90.0))
+		dDiamondSet = 2;
+	else if (dBeamPolarizationAngle == (135.0))
+		dDiamondSet = 3;
+	else if (dBeamPolarizationAngle == (45.0))
+		dDiamondSet = 4;
+
+
+	/******************************************* LOOP OVER THROWN DATA (OPTIONAL) ***************************************/
+	/*	       	
+	//Loop over throwns
+	for(UInt_t loc_i = 0; loc_i < Get_NumThrown(); ++loc_i)
+	{
+		//Set branch array indices corresponding to this particle
+		dThrownWrapper->Set_ArrayIndex(loc_i);
+	}
+	*/
+
+		/******************************************* GET THROWN FOUR-MOMENTA***************************************/
+		TLorentzVector locThrownBeam_P4,locThrownProton_P4,locThrownPiplusL_P4,locThrownPiplusU_P4,locThrownPiminus1_P4,locThrownPiminus2_P4;
+		Double_t locEnergy=0.,dDiamondSet=0.;
+		
+		
+		if(dThrownBeam != NULL){
+		  
+		  locEnergy = dThrownBeam->Get_P4().E();	  
+		  locThrownBeam_P4 = dThrownBeam->Get_P4();
+
+		  dThrownWrapper->Set_ArrayIndex(0);
+		  locThrownProton_P4 = dThrownWrapper->Get_P4();
+		  dThrownWrapper->Set_ArrayIndex(1);
+		  locThrownPiplusL_P4 = dThrownWrapper->Get_P4();
+		  dThrownWrapper->Set_ArrayIndex(2);
+		  locThrownPiplusU_P4 = dThrownWrapper->Get_P4();
+		  dThrownWrapper->Set_ArrayIndex(3);
+		  locThrownPiminus1_P4 = dThrownWrapper->Get_P4();
+		  dThrownWrapper->Set_ArrayIndex(4);
+		  locThrownPiminus2_P4 = dThrownWrapper->Get_P4();
+		}	
+
+
+		TLorentzVector MomTransfP4 = locThrownBeam_P4 - locThrownPiplusU_P4 - locThrownPiminus1_P4 - locThrownPiminus2_P4;
+		Double_t loctvar = MomTransfP4.Mag2();
+
+		/////////////*********************Define angles in the GJ and HF frames; define auxiliary vectors*********************************
+		
+
+		Double_t CosThetaThrown_Piminus1_GJ, CosThetaThrown_Piminus2_GJ, PhiThrown_Piminus1_GJ, PhiThrown_Piminus2_GJ;
+		Double_t CosThetaThrown_Piminus1_HF, CosThetaThrown_Piminus2_HF, PhiThrown_Piminus1_HF, PhiThrown_Piminus2_HF;
+
+		
+		TLorentzVector X_P4,Isobar_P4,PiminusBachelor_P4,PiminusIsobar_P4,Recoil_P4,Photon_P4;
+		TVector3 bX, bIso;
+		TVector3 xGJ,yGJ,zGJ,xHF,yHF,zHF,anglesGJ,anglesHF;
+
+		
+
+		//CALCULATION FOR THE THROWN MOMENTA
+
+		////////////////The 1st combination: Piminus1 is bachelor///////////////
+		X_P4 = locThrownPiplusU_P4 + locThrownPiminus1_P4 + locThrownPiminus2_P4; 
+		Isobar_P4 = locThrownPiplusU_P4 + locThrownPiminus2_P4;
+		PiminusBachelor_P4 = locThrownPiminus1_P4;
+		PiminusIsobar_P4 = locThrownPiminus2_P4;
+		Recoil_P4 = locThrownPiplusL_P4 + locThrownProton_P4;		
+		Photon_P4 = locThrownBeam_P4;
+
+		
+		//Define boosts to the X and Isobar rest frames		
+		bX = -X_P4.BoostVector();
+		bIso = -Isobar_P4.BoostVector();
+
+
+		//Go to the X rest frame
+		Photon_P4.Boost(bX); 
+		Isobar_P4.Boost(bX); 
+		Recoil_P4.Boost(bX); 
+		PiminusBachelor_P4.Boost(bX); 
+
+		
+		zGJ = Photon_P4.Vect().Unit();
+		yGJ = Recoil_P4.Vect().Cross(zGJ).Unit();
+		xGJ = yGJ.Cross(zGJ);
+		anglesGJ.SetXYZ(PiminusBachelor_P4.Vect().Dot(xGJ),PiminusBachelor_P4.Vect().Dot(yGJ),PiminusBachelor_P4.Vect().Dot(zGJ));
+
+	      
+	        CosThetaThrown_Piminus1_GJ = anglesGJ.CosTheta();
+		PhiThrown_Piminus1_GJ = TMath::RadToDeg()*anglesGJ.Phi();
+
+		
+		//Go to the Isobar rest frame
+		PiminusIsobar_P4.Boost(bIso); 
+
+		
+		zHF = Isobar_P4.Vect().Unit();
+		yHF = zGJ.Cross(zHF);
+		xHF = yHF.Cross(zHF);
+		anglesHF.SetXYZ(PiminusIsobar_P4.Vect().Dot(xHF),PiminusIsobar_P4.Vect().Dot(yHF),PiminusIsobar_P4.Vect().Dot(zHF));
+
+		
+		CosThetaThrown_Piminus2_HF = anglesHF.CosTheta();
+		PhiThrown_Piminus2_HF = TMath::RadToDeg()*anglesHF.Phi();
+
+		
+		
+		////////////////The 2nd combination: Piminus2 is bachelor///////////////
+		X_P4 = locThrownPiplusU_P4 + locThrownPiminus1_P4 + locThrownPiminus2_P4; 
+		Isobar_P4 = locThrownPiplusU_P4 + locThrownPiminus1_P4;
+		PiminusBachelor_P4 = locThrownPiminus2_P4;
+		PiminusIsobar_P4 = locThrownPiminus1_P4;
+		Recoil_P4 = locThrownPiplusL_P4 + locThrownProton_P4;		
+		Photon_P4 = locThrownBeam_P4;
+
+		
+		//Define boosts to the X and Isobar rest frames		
+		bX = -X_P4.BoostVector();
+		bIso = -Isobar_P4.BoostVector();
+
+
+		//Go to the X rest frame
+		Photon_P4.Boost(bX); 
+		Isobar_P4.Boost(bX); 
+		Recoil_P4.Boost(bX); 
+		PiminusBachelor_P4.Boost(bX); 
+
+		
+		zGJ = Photon_P4.Vect().Unit();
+		yGJ = Recoil_P4.Vect().Cross(zGJ).Unit();
+		xGJ = yGJ.Cross(zGJ);
+		anglesGJ.SetXYZ(PiminusBachelor_P4.Vect().Dot(xGJ),PiminusBachelor_P4.Vect().Dot(yGJ),PiminusBachelor_P4.Vect().Dot(zGJ));
+
+	      
+	        CosThetaThrown_Piminus2_GJ = anglesGJ.CosTheta();
+		PhiThrown_Piminus2_GJ = TMath::RadToDeg()*anglesGJ.Phi();
+
+		
+		//Go to the Isobar rest frame
+		PiminusIsobar_P4.Boost(bIso); 
+
+		
+		zHF = Isobar_P4.Vect().Unit();
+		yHF = zGJ.Cross(zHF);
+		xHF = yHF.Cross(zHF);
+		anglesHF.SetXYZ(PiminusIsobar_P4.Vect().Dot(xHF),PiminusIsobar_P4.Vect().Dot(yHF),PiminusIsobar_P4.Vect().Dot(zHF));
+
+		
+		CosThetaThrown_Piminus1_HF = anglesHF.CosTheta();
+		PhiThrown_Piminus1_HF = TMath::RadToDeg()*anglesHF.Phi();
+
+
+		/****************************************** FILL FLAT TREE (IF DESIRED) ******************************************/
+
+		// RECOMMENDED: FILL ACCIDENTAL WEIGHT
+		// dFlatTreeInterface->Fill_Fundamental<Double_t>("accidweight",locHistAccidWeightFactor);
+
+
+		vector<TLorentzVector> locThrownFinalStateP4; // Keep the same order as in the config file
+  		locThrownFinalStateP4.push_back(locThrownPiplusU_P4);
+		locThrownFinalStateP4.push_back(locThrownPiplusL_P4); 
+		locThrownFinalStateP4.push_back(locThrownPiminus1_P4); 
+		locThrownFinalStateP4.push_back(locThrownPiminus2_P4); 
+		locThrownFinalStateP4.push_back(locThrownProton_P4);
+
+		
+		
+	     	//FILL ANY CUSTOM BRANCHES FIRST!!
+
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("MCWeight",(double) Get_MCWeight());
+
+
+	       
+		//Thrown four momenta of the beam and final state particles
+		dFlatTreeInterface->Fill_TObject<TLorentzVector>("Thrown_Beam_P4",locThrownBeam_P4);
+		dFlatTreeInterface->Fill_TObject<TLorentzVector>("Thrown_PiplusL_P4",locThrownPiplusL_P4);
+		dFlatTreeInterface->Fill_TObject<TLorentzVector>("Thrown_PiplusU_P4",locThrownPiplusU_P4);
+		dFlatTreeInterface->Fill_TObject<TLorentzVector>("Thrown_Piminus1_P4",locThrownPiminus1_P4);
+		dFlatTreeInterface->Fill_TObject<TLorentzVector>("Thrown_Piminus2_P4",locThrownPiminus2_P4);
+		dFlatTreeInterface->Fill_TObject<TLorentzVector>("Thrown_Proton_P4",locThrownProton_P4);
+
+		
+		
+		//Interaction vertex, momentum transfer, missing mass and other useful variables
+		//		dFlatTreeInterface->Fill_Fundamental<Double_t>("DT_RFTime", (double) DT_RF);
+		//		dFlatTreeInterface->Fill_Fundamental<Double_t>("RFTimeWeight",RFTimeWeight);
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("DiamondSet",dDiamondSet);
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("EnBeam",locEnergy);
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("tvar",loctvar);
+
+
+		//Thrown angles in the GJ and HF frames
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("CosThetaThrown_Piminus1Bachelor_GJ",CosThetaThrown_Piminus1_GJ);	
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("PhiThrown_Piminus1Bachelor_GJ",PhiThrown_Piminus1_GJ);
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("CosThetaThrown_Piminus2Bachelor_GJ",CosThetaThrown_Piminus2_GJ);	
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("PhiThrown_Piminus2Bachelor_GJ",PhiThrown_Piminus2_GJ);
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("CosThetaThrown_Piminus1Isobar_HF",CosThetaThrown_Piminus1_HF);	
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("PhiThrown_Piminus1Isobar_HF",PhiThrown_Piminus1_HF);	
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("CosThetaThrown_Piminus2Isobar_HF",CosThetaThrown_Piminus2_HF);	
+		dFlatTreeInterface->Fill_Fundamental<Double_t>("PhiThrown_Piminus2Isobar_HF",PhiThrown_Piminus2_HF);	
+
+
+			
+
+		//FILL FLAT TREE
+		FillAmpTools_FlatTree(locThrownBeam_P4, locThrownFinalStateP4);
+		Fill_FlatTree(); // for every event
+
+
+
+	return kTRUE;
+}
+
+void DSelThrown_2pip2pim::Finalize(void)
+{
+	//Save anything to output here that you do not want to be in the default DSelector output ROOT file.
+
+	//Otherwise, don't do anything else (especially if you are using PROOF).
+		//If you are using PROOF, this function is called on each thread,
+		//so anything you do will not have the combined information from the various threads.
+		//Besides, it is best-practice to do post-processing (e.g. fitting) separately, in case there is a problem.
+
+	//DO YOUR STUFF HERE
+
+	//CALL THIS LAST
+	DSelector::Finalize(); //Saves results to the output file
+}
