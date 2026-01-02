@@ -1,0 +1,9 @@
+# 100% rho0->pi+pi-
+noPhotos
+Decay rho0
+#Decay phi
+1.00   pi+   pi-   PHSP;
+Enddecay
+
+
+End
